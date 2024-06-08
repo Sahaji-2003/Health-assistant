@@ -46,69 +46,141 @@
 // export default Signup;
 
 
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
+// import { useGlobalState } from '../constants/GlobalStateProvider';
+// import { API_URL } from '../constants/Url';
+// const Signup = () => {
+//       const navigate = useNavigate();
+//   const { getGlobal, setGlobal } = useGlobalState();
+//     const [formData, setFormData] = useState({
+//         fullName: '',
+//         age: '',
+//         gender: '',
+//         height: '',
+//         weight: '',
+//         user_id: '',
+//         password: ''
+//     });
+
+//     const [successMessage, setSuccessMessage] = useState('');
+//     const [errorMessage, setErrorMessage] = useState('');
+
+//     const { fullName, age, gender, height, weight, user_id, password } = formData;
+
+//     const handleChange = (e) => {
+//         setFormData({ ...formData, [e.target.name]: e.target.value });
+//     };
+
+//     const handleSubmit = async (e) => {
+//         e.preventDefault();
+
+//         try {
+//             const res = await axios.post(`${API_URL}/api/auth/signup`, formData);
+//             setSuccessMessage('Sign up successful! Redirecting to login page...');
+//             setTimeout(() => {
+//                 // Redirect to login page after 2 seconds
+//                 //  setGlobalUserId({user_id});
+//         setGlobal(user_id);
+//         navigate('/login');
+//                 // window.location.href = '/login';
+//             }, 2000);
+//         } catch (error) {
+//             console.error(error);
+//             setErrorMessage('Failed to sign up. Please try again.');
+//         }
+//     };
+
+//     return (
+//         <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+//             <h2 style={{ marginBottom: '20px', textAlign: 'center' }}>Sign Up</h2>
+//             {successMessage && <div style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px', backgroundColor: '#d4edda', color: '#155724' }}>{successMessage}</div>}
+//             {errorMessage && <div style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px', backgroundColor: '#f8d7da', color: '#721c24' }}>{errorMessage}</div>}
+//             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+//                 <input type="text" name="fullName" value={fullName} onChange={handleChange} placeholder="Full Name" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+//                 <input type="number" name="age" value={age} onChange={handleChange} placeholder="Age" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+//                 <input type="text" name="gender" value={gender} onChange={handleChange} placeholder="Gender" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+//                 <input type="number" name="height" value={height} onChange={handleChange} placeholder="Height (cm)" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+//                 <input type="number" name="weight" value={weight} onChange={handleChange} placeholder="Weight (kg)" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+//                 <input type="email" name="user_id" value={user_id} onChange={handleChange} placeholder="Email" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+//                 <input type="password" name="password" value={password} onChange={handleChange} placeholder="Password" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+//                 <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Sign Up</button>
+//             </form>
+//         </div>
+//     );
+// };
+
+// export default Signup;
+
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useGlobalState } from '../constants/GlobalStateProvider';
 import { API_URL } from '../constants/Url';
+
 const Signup = () => {
-      const navigate = useNavigate();
-  const { getGlobal, setGlobal } = useGlobalState();
-    const [formData, setFormData] = useState({
-        fullName: '',
-        age: '',
-        gender: '',
-        height: '',
-        weight: '',
-        user_id: '',
-        password: ''
-    });
+  const navigate = useNavigate();
+  const { setGlobal } = useGlobalState();
+  const [formData, setFormData] = useState({
+    fullName: '',
+    age: '',
+    gender: '',
+    height: '',
+    weight: '',
+    user_id: '',
+    password: ''
+  });
 
-    const [successMessage, setSuccessMessage] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-    const { fullName, age, gender, height, weight, user_id, password } = formData;
+  const { fullName, age, gender, height, weight, user_id, password } = formData;
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        try {
-            const res = await axios.post(`${API_URL}/api/auth/signup`, formData);
-            setSuccessMessage('Sign up successful! Redirecting to login page...');
-            setTimeout(() => {
-                // Redirect to login page after 2 seconds
-                //  setGlobalUserId({user_id});
-        setGlobal(user_id);
-        navigate('/login');
-                // window.location.href = '/login';
-            }, 2000);
-        } catch (error) {
-            console.error(error);
-            setErrorMessage('Failed to sign up. Please try again.');
-        }
-    };
+    try {
+      const res = await axios.post(`${API_URL}/api/auth/signup`, formData);
 
-    return (
-        <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-            <h2 style={{ marginBottom: '20px', textAlign: 'center' }}>Sign Up</h2>
-            {successMessage && <div style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px', backgroundColor: '#d4edda', color: '#155724' }}>{successMessage}</div>}
-            {errorMessage && <div style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px', backgroundColor: '#f8d7da', color: '#721c24' }}>{errorMessage}</div>}
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-                <input type="text" name="fullName" value={fullName} onChange={handleChange} placeholder="Full Name" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
-                <input type="number" name="age" value={age} onChange={handleChange} placeholder="Age" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
-                <input type="text" name="gender" value={gender} onChange={handleChange} placeholder="Gender" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
-                <input type="number" name="height" value={height} onChange={handleChange} placeholder="Height (cm)" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
-                <input type="number" name="weight" value={weight} onChange={handleChange} placeholder="Weight (kg)" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
-                <input type="email" name="user_id" value={user_id} onChange={handleChange} placeholder="Email" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
-                <input type="password" name="password" value={password} onChange={handleChange} placeholder="Password" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
-                <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Sign Up</button>
-            </form>
-        </div>
-    );
+      if (res.status === 201) {
+        setSuccessMessage('Sign up successful! Redirecting to login page...');
+        setGlobal({ user_id }); // Assuming setGlobal expects an object
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+      } else {
+        throw new Error(res.data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      setErrorMessage(error.response?.data?.message || 'Failed to sign up. Please try again.');
+    }
+  };
+
+  return (
+    <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+      <h2 style={{ marginBottom: '20px', textAlign: 'center' }}>Sign Up</h2>
+      {successMessage && <div style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px', backgroundColor: '#d4edda', color: '#155724' }}>{successMessage}</div>}
+      {errorMessage && <div style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px', backgroundColor: '#f8d7da', color: '#721c24' }}>{errorMessage}</div>}
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+        <input type="text" name="fullName" value={fullName} onChange={handleChange} placeholder="Full Name" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+        <input type="number" name="age" value={age} onChange={handleChange} placeholder="Age" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+        <input type="text" name="gender" value={gender} onChange={handleChange} placeholder="Gender" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+        <input type="number" name="height" value={height} onChange={handleChange} placeholder="Height (cm)" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+        <input type="number" name="weight" value={weight} onChange={handleChange} placeholder="Weight (kg)" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+        <input type="email" name="user_id" value={user_id} onChange={handleChange} placeholder="Email" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+        <input type="password" name="password" value={password} onChange={handleChange} placeholder="Password" style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} required />
+        <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Sign Up</button>
+      </form>
+    </div>
+  );
 };
 
 export default Signup;
+
