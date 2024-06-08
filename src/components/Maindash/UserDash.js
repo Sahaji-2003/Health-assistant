@@ -74,7 +74,7 @@ function UserDash() {
       <div className={`content ${isSidebarOpen && window.innerWidth > 991.98 ? 'content-shifted' : ''}`}>
         <Sidebar isOpen={isSidebarOpen} closeSidebar={toggleSidebar} user_id={user_id} />
       <Dashboard user_id={user_id}/>
-      {/* <h1> {globalState}</h1> */}
+      <h1> {globalState}</h1>
     </div>
     </div>
   );
