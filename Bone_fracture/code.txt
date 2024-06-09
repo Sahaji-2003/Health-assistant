@@ -1,0 +1,34 @@
+import tensorflow as tf
+from PIL import Image
+import numpy as np
+
+# Step 1: Load the trained model
+model_path = '/content/my_keras_model_1.h5'
+model = tf.keras.models.load_model(model_path)
+print(f'Model loaded from {model_path}')
+
+# Step 2: Preprocess the input image
+def preprocess_image(image_path):
+    img = Image.open(image_path)
+    img = img.resize((224, 224))  # Resize the image to 224x224 pixels
+    img = img.convert('RGB')      # Ensure the image is in RGB format (remove alpha channel)
+    img = np.array(img) / 255.0   # Convert the image to a numpy array and normalize to [0, 1]
+    img = np.expand_dims(img, axis=0)  # Add a batch dimension
+    return img
+
+# Path to the image you want to predict on
+image_path = '/content/fracture_ex.png'  # Replace this with the actual path to your image
+preprocessed_image = preprocess_image(image_path)
+
+# Step 3: Make a prediction
+prediction = model.predict(preprocessed_image)
+predicted_class = np.argmax(prediction, axis=1)[0]
+confidence = prediction[0][predicted_class]
+
+# Define class labels
+class_labels = {1: 'Not Fractured', 0: 'Fractured'}
+
+# Get the predicted label
+predicted_label = class_labels[predicted_class]
+
+print(f'Predicted class: {predicted_label} with confidence: {confidence}')
