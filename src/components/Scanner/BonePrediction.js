@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 
-function ChestDiseasePrediction() {
+function BonePrediction() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [prediction, setPrediction] = useState('');
@@ -30,13 +30,13 @@ function ChestDiseasePrediction() {
     formData.append('image', selectedFile); // Ensure the file is correctly appended
 
     try {
-      const response = await axios.post('http://localhost:8001/chestpredict', formData, {
+      const response = await axios.post('http://localhost:8002/bonepredict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       setPrediction(response.data.prediction);
-      setProbabilities(response.data.probabilities || {});
+      setProbabilities(response.data.probabilities||{});
       setShowWarning(true);
     } catch (error) {
       console.error('Prediction failed:', error);
@@ -88,17 +88,18 @@ function ChestDiseasePrediction() {
           This is an AI prediction. Please consult a medical professional for accurate diagnosis.
         </p>
       )}
-      {prediction && (
-        <div style={{ marginBottom: '20px' }}>
-          <h3>Prediction</h3>
-          <p style={{ fontSize: '20px', marginBottom: '10px' }}>Tumor Type: <strong>{prediction}</strong></p>
-          <div style={{ maxWidth: '400px', margin: '0 auto' }}>
-            <Bar data={probabilityData} options={chartOptions} />
-          </div>
-        </div>
-      )}
+     {prediction && (
+  <div style={{ marginBottom: '20px' }}>
+    <h3>Prediction</h3>
+    <p style={{ fontSize: '20px', marginBottom: '10px' }}>Predicted Class: <strong>{prediction}</strong></p>
+    <div style={{ maxWidth: '400px', margin: '0 auto' }}>
+      <Bar data={probabilityData} options={chartOptions} />
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
 
-export default ChestDiseasePrediction;
+export default BonePrediction;

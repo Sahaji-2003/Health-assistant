@@ -30,7 +30,7 @@ function TumorPrediction() {
     formData.append('image', selectedFile); // Ensure the file is correctly appended
 
     try {
-      const response = await axios.post('http://localhost:8000/predict/model2', formData, {
+      const response = await axios.post('http://localhost:8000/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

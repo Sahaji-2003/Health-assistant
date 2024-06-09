@@ -9,6 +9,8 @@ import GensetMonitoringTable from '../Machines/GensetMonitoringTable'
 import SeparateApi from '../Machines/SeparateApi'
 import HealthDashboard from './HealthDashboard'
 import MriScan from '../Scanner/MriScan'
+import RecordsAndReports from '../RecordsAndReports'
+import WeightAndBmi from '../WeightAndBmi'
 
 
 function Dashboard() {
@@ -34,7 +36,9 @@ function Dashboard() {
           <div className="row">
           <LineChartOverall/>
             <DataCards />
-            <HealthDashboard/>
+            {/* <HealthDashboard/> */}
+            {/* <WeightAndBmi/> */}
+            <RecordsAndReports/>
             {/* <GeneralMachineTable/> */}
             {/* <SeparateApi/> */}
             {/* <SpecificMachineTable/>

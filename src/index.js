@@ -26,8 +26,14 @@ import ScanOptions from './components/Scanner/ScanOptions';
 import { MdCrisisAlert } from 'react-icons/md';
 import MriScan from './components/Scanner/MriScan';
 import ChestScan from './components/Scanner/ChestScan';
+
+import BpRecord from './components/BloodPressure/BpRecord';
+import BoneScan from './components/Scanner/BoneScan';
+import BloodSugarRecord from './components/BloodSugarRecord';
+import WeightAndBmi from './components/WeightAndBmi';
 import AiHome from './components/AiChat/AiHome';
 import AiIndex from './components/AiChat/AiIndex';
+
 
 ReactDOM.render(
   <GlobalStateProvider>
@@ -58,6 +64,10 @@ ReactDOM.render(
         <Route path="/AiHome" element={<AiHome/>} />
         <Route path="/AiIndex" element={<AiIndex/>} />
         <Route path="/ScanOptions" element={<ScanOptions/>}/>
+        <Route path="/BpRecord" element={<BpRecord/>}/>
+        <Route path="/BoneScan" element={<BoneScan/>}/>
+        <Route path="/BloodSugarRecord" element={<BloodSugarRecord/>}/>
+        <Route path="/WeightAndBmi" element={<WeightAndBmi/>}/>
         
         
 
