@@ -26,7 +26,10 @@ import ScanOptions from './components/Scanner/ScanOptions';
 import { MdCrisisAlert } from 'react-icons/md';
 import MriScan from './components/Scanner/MriScan';
 import ChestScan from './components/Scanner/ChestScan';
-
+import BpRecord from './components/BloodPressure/BpRecord';
+import BoneScan from './components/Scanner/BoneScan';
+import BloodSugarRecord from './components/BloodSugarRecord';
+import WeightAndBmi from './components/WeightAndBmi';
 ReactDOM.render(
   <GlobalStateProvider>
   <React.StrictMode>
@@ -54,6 +57,10 @@ ReactDOM.render(
         <Route path="/MriScan" element={<MriScan/>} />
         <Route path="/ChestScan" element={<ChestScan/>} />
         <Route path="/ScanOptions" element={<ScanOptions/>}/>
+        <Route path="/BpRecord" element={<BpRecord/>}/>
+        <Route path="/BoneScan" element={<BoneScan/>}/>
+        <Route path="/BloodSugarRecord" element={<BloodSugarRecord/>}/>
+        <Route path="/WeightAndBmi" element={<WeightAndBmi/>}/>
         
         
 

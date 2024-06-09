@@ -1,17 +1,15 @@
-
-
 import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
-
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useGlobalState } from '../constants/GlobalStateProvider';
 import { API_URL } from '../constants/Url';
+import TumorPrediction from './TumorPrediction';
+import ChestDiseasePrediction from './ChestDiseasePrediction';
+import BonePrediction from './BonePrediction';
 
-
-
-function ScanOptions() {
+function BoneScan() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   useEffect(() => {
     // Function to handle sidebar visibility based on viewport width
@@ -77,54 +75,18 @@ function ScanOptions() {
       <Header toggleSidebar={toggleSidebar} user_id={globalState} />
       <div className={`content ${isSidebarOpen && window.innerWidth > 991.98 ? 'content-shifted' : ''}`}>
         <Sidebar isOpen={isSidebarOpen} closeSidebar={toggleSidebar} user_id={user_id} />
-      <br/>
-      <br/>
-      <div className="container">
-      <h1 className="text-center mt-5 mb-4">Scan Options</h1>
-      <div className="row justify-content-center">
-        <div className="col-md-4">
-          <div className="card text-center mb-4">
-            <Link to="/MriScan">
-            <div className="card-body">
-              <h5 className="card-title">Scan MRI Image</h5>
-              <p className="card-text">Get information about MRI scan and type of tumor.</p>
-              <button className="btn btn-primary">Scan MRI</button>
-            </div>
-            </Link>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card text-center mb-4">
-          <Link to="/ChestScan">
-            <div className="card-body">
-              <h5 className="card-title">Chest X-ray Scan</h5>
-              <p className="card-text">Get information about chest X-ray scan and abnormalities.</p>
-              <button className="btn btn-primary">Scan X-ray</button>
-            </div>
-            </Link>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card text-center mb-4">
-          <Link to="/BoneScan">
-            <div className="card-body">
-              <h5 className="card-title">Bone Fracture Scanner</h5>
-              <p className="card-text">Scan for bone fractures and get detailed report.</p>
-              <button className="btn btn-primary">Scan Bones</button>
-            </div>
-            </Link>
-          </div>
-        </div>
-      </div>
+        <br/>
+        <br/>
+        <br/>
+           <BonePrediction/>
+      
     </div>
-    </div>
-   
     </div>
   );
 }
 
 
-export default ScanOptions;
+export default BoneScan;
 
 
 
