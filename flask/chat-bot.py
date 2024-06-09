@@ -676,3 +676,94 @@ def handle_message():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+
+from flask import Flask, request, jsonify
+import google.generativeai as genai
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+# Configure the API key for Google Generative AI
+genai.configure(api_key='AIzaSyB0zbbq3Ck9NTlsa27mRvz4z3xG8FjBuPs')  # Replace with your actual API key
+
+# Load Gemini Pro model and start a chat
+model = genai.GenerativeModel('gemini-pro')
+chat = model.start_chat(history=[])
+
+# System prompts
+system_prompts = [
+    """
+    I am your AI Health Assistant. My purpose is to assist you in understanding and managing your health. 
+    If you're feeling unwell or have any symptoms, feel free to describe them, and I'll provide you with guidance.
+    Additionally, I can help you understand medical terms, provide information about diseases, and suggest remedies.
+    
+    Please remember that while I can provide information and support, it's always important to consult a healthcare professional 
+    for personalized medical advice and treatment.
+    """
+]
+
+# Safety settings
+safety_settings = [
+    {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+]
+
+# Function to get response from Gemini model
+def get_gemini_response(prompt, message_history):
+    conversation = [{'role': 'user', 'content': msg['content']} for msg in message_history]
+    conversation.append({'role': 'user', 'content': prompt})
+    
+    response = chat.send_message(prompt, stream=True)
+    response_text = "".join([chunk.text for chunk in response])
+
+    return response_text.strip()
+
+# Provide the system prompt initially
+@app.route('/system_prompt', methods=['GET'])
+def get_system_prompt():
+    return jsonify({'prompt': system_prompts[0]})  # Assuming there's only one system prompt for now
+
+@app.route('/message', methods=['POST'])
+def handle_message():
+    data = request.json
+    user_message = data['message']
+
+    # Define state dictionary to keep track of conversation
+    state = {"message_history": []}
+
+    # If it's the first message, set the initial prompt
+    if not state["message_history"]:
+        initial_prompt = "Hello! I am your AI Health Assistant. How can I assist you today? If you're experiencing any symptoms, please describe them."
+        state["message_history"].append({'role': 'assistant', 'content': initial_prompt})
+
+    # Handle incoming messages
+    state["message_history"].append({'role': 'user', 'content': user_message})
+
+    # Get response from Gemini model
+    bot_response = get_gemini_response(user_message, state["message_history"])
+
+    # Check if the user mentioned symptoms
+    if "symptoms" in bot_response.lower():
+        follow_up_prompt = "Thank you for providing your symptoms. Can you also share your age, gender, and any relevant medical history?"
+        state["message_history"].append({'role': 'assistant', 'content': follow_up_prompt})
+
+    return jsonify({'response': bot_response})
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5001)
