@@ -254,7 +254,7 @@ import React from 'react';
 function DataCards() {
   const machineInfo = {
     doctorConsultancy: { count: 10, type: 'Doctor Consultancy', image: 'assets/img/doctor_image.jpeg', link: '/ChatHome' },
-    aiDoctor: { count: 5, type: 'AI Doctor', image: 'assets/img/ai_doctor_image.jpeg', link: '/ai-doctor' },
+    aiDoctor: { count: 5, type: 'AI Doctor', image: 'assets/img/ai_doctor_image.jpeg', link: '/AiIndex' },
     reportsScanner: { count: 3, type: 'Reports Scanner', image: 'assets/img/reports_scanner_image.jpeg', link: '/ScanOptions' }
   };
 
