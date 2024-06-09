@@ -189,15 +189,49 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <Link to="/IndexMachines">
+              <Link to="/WeightAndBmi">
                 <a href="tables-general.html" style={navLinkStyles}>
                   <i className="bi bi-circle" style={iconStyles} />
-                  <span>Fuel Machine</span>
+                  <span>BMI Checkup</span>
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link to="/WeightAndBmi">
+                <a href="tables-general.html" style={navLinkStyles}>
+                  <i className="bi bi-circle" style={iconStyles} />
+                  <span>Stress Management</span>
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link to="/WeightAndBmi">
+                <a href="tables-general.html" style={navLinkStyles}>
+                  <i className="bi bi-circle" style={iconStyles} />
+                  <span>Fitness</span>
                 </a>
               </Link>
             </li>
           </ul>
         </li>
+
+        <Link to="/ChatHome">
+        <li className="nav-item" style={navItemStyles}>
+          <a className="nav-link collapsed" style={navLinkStyles}>
+            <i className="bi bi-envelope" style={iconStyles} />
+            <span>Doctor Consultancy</span>
+          </a>
+        </li>
+        </Link>
+
+        <Link to="/BpRecord">
+          <li className="nav-item" style={navItemStyles}>
+            <a className="nav-link collapsed" style={navLinkStyles}>
+              <i className="bi bi-card-list" style={iconStyles} />
+              <span>Reports</span>
+            </a>
+          </li>
+        </Link>
 
         <li className="nav-heading">Pages</li>
         <li className="nav-item" style={navItemStyles}>
@@ -217,23 +251,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
             </a>
           </li>
         </Link>
-         <Link to="/ChatHome">
-        <li className="nav-item" style={navItemStyles}>
-          <a className="nav-link collapsed" style={navLinkStyles}>
-            <i className="bi bi-envelope" style={iconStyles} />
-            <span>Doctor Consultancy</span>
-          </a>
-        </li>
-        </Link>
-
-        <Link to="/IndexGenerateReport">
-          <li className="nav-item" style={navItemStyles}>
-            <a className="nav-link collapsed" style={navLinkStyles}>
-              <i className="bi bi-card-list" style={iconStyles} />
-              <span>Reports</span>
-            </a>
-          </li>
-        </Link>
+        
 
         <li className="nav-item" style={navItemStyles}>
           <Link to="/">

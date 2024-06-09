@@ -43,6 +43,7 @@ function RecordsAndReports() {
   return (
     <div className="container my-5">
       <h2 className="mb-4 text-center">Records and Reports</h2>
+      <p className="text-center">Click on data cards for report</p>
       <div className="row justify-content-center">
         {Object.keys(dataCards).map((key, index) => (
           <div key={index} className="col-lg-4 col-md-6 col-sm-12" style={cardContainerStyle}>

@@ -493,7 +493,7 @@ const Header = ({ toggleSidebar, user_id }) => {
     >
       <div className="d-flex align-items-center justify-content-between" style={{ padding: '0 15px' }}>
         <a className="logo d-flex align-items-center">
-          <img src="assets/img/logo.png" alt="" style={{ height: '140px', width: '50px' }} />
+          <img src="assets/img/logo.png" alt="" style={{ height: '180px', width: '50px' }} />
           <span className="d-none d-lg-block" style={{ marginLeft: '10px' }}>Care Anywhere</span>
         </a>
         <div className="header-toggle" onClick={toggleSidebar} style={{ cursor: 'pointer' }}>

@@ -79,8 +79,8 @@ function UserDash() {
       <Dashboard user_id={user_id}/>
   
       {/* <ScanOptions/> */}
-      <MriScan/>
-      <h1> {globalState}</h1>
+      {/* <MriScan/> */}
+      {/* <h1> {globalState}</h1> */}
     </div>
     </div>
   );
