@@ -26,6 +26,8 @@ import ScanOptions from './components/Scanner/ScanOptions';
 import { MdCrisisAlert } from 'react-icons/md';
 import MriScan from './components/Scanner/MriScan';
 import ChestScan from './components/Scanner/ChestScan';
+import AiHome from './components/AiChat/AiHome';
+import AiIndex from './components/AiChat/AiIndex';
 
 ReactDOM.render(
   <GlobalStateProvider>
@@ -53,6 +55,8 @@ ReactDOM.render(
         <Route path="/ChatHome" element={<ChatHome/>}/>
         <Route path="/MriScan" element={<MriScan/>} />
         <Route path="/ChestScan" element={<ChestScan/>} />
+        <Route path="/AiHome" element={<AiHome/>} />
+        <Route path="/AiIndex" element={<AiIndex/>} />
         <Route path="/ScanOptions" element={<ScanOptions/>}/>
         
         
