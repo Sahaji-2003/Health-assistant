@@ -1,0 +1,61 @@
+from joblib import load
+
+# Path to the saved model file
+model_path = 'best_model.joblib'
+
+# Load the model
+loaded_model = load(model_path)
+
+print(f'Model loaded from {model_path}')
+
+
+import pandas as pd
+data = {
+    'Gender': ['Male'],
+    'Age': [35],
+    'Occupation': ['Engineer'],
+    'Sleep Duration': [7.5],
+    'Quality of Sleep': [8],
+    'Physical Activity Level': [3],
+    'Stress Level': [5],
+    'BMI Category': ['Normal'],
+    'Heart Rate': [75],
+    'Daily Steps': [8000],
+    'BloodPressure_Upper_Value': [120],
+    'BloodPressure_Lower_Value': [80]
+}
+
+# Create DataFrame from dictionary
+df_new = pd.DataFrame(data)
+
+# Display the DataFrame
+print("Input DataFrame for prediction:")
+print(df_new)
+
+
+
+from sklearn import preprocessing
+label_encoder = preprocessing.LabelEncoder()
+# Assuming df_new is your new input data DataFrame
+# Apply label encoding to categorical features
+df_new['Gender'] = label_encoder.fit_transform(df_new['Gender'])
+df_new['Occupation'] = label_encoder.fit_transform(df_new['Occupation'])
+df_new['BMI Category'] = label_encoder.fit_transform(df_new['BMI Category'])
+df_new
+# Now, df_new is preprocessed and ready for prediction
+# Use your model to make predictions on df_new
+predictions = loaded_model.predict(df_new)
+
+# Assuming you have a classification model, predictions will be the predicted labels
+label_mapping = {
+    0: 'insomnia',
+    1: 'none',
+    2: 'sleep apnea'
+}
+
+# Map integer predictions to labels
+predicted_labels = [label_mapping[prediction] for prediction in predictions]
+
+# Display the predicted labels
+print("Predicted labels:")
+print(predicted_labels)
