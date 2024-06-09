@@ -253,9 +253,9 @@ import React from 'react';
 
 function DataCards() {
   const machineInfo = {
-    doctorConsultancy: { count: 10, type: 'Doctor Consultancy', image: 'assets/img/doctor_image.jpeg', link: '/ChatHome' },
-    aiDoctor: { count: 5, type: 'AI Doctor', image: 'assets/img/ai_doctor_image.jpeg', link: '/AiIndex' },
-    reportsScanner: { count: 3, type: 'Reports Scanner', image: 'assets/img/reports_scanner_image.jpeg', link: '/ScanOptions' }
+    doctorConsultancy: {  type: 'Doctor Consultancy', image: 'assets/img/doctor_image.jpeg', link: '/ChatHome' },
+    aiDoctor: {  type: 'AI Doctor', image: 'assets/img/ai_doctor_image.jpeg', link: '/AiIndex' },
+    reportsScanner: {  type: 'Reports Scanner', image: 'assets/img/reports_scanner_image.jpeg', link: '/ScanOptions' }
   };
 
   return (
@@ -264,14 +264,14 @@ function DataCards() {
         {Object.keys(machineInfo).map((key, index) => (
           <div key={index} className="col-xxl-4 col-xl-12">
             <a href={machineInfo[key].link} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <div className="card info-card" style={{ backgroundColor: '#ffffe6', marginBottom: '20px' }}>
+              <div className="card info-card" style={{ backgroundColor: '#ffffe6', marginBottom: '20px', borderRadius: '15px' }}>
                 <div className="card-body">
                   <h5 className="card-title" style={{ color: '#e6005c' }}>
-                     {machineInfo[key].type} <span>| </span>
+                    {machineInfo[key].type} <span>| </span>
                   </h5>
                   <div className="d-flex align-items-center">
-                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center" style={{ backgroundColor: '#f9cccc', width: '50px', height: '50px' }}>
-                      <img src={machineInfo[key].image} alt="Machine Image" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center" style={{ backgroundColor: '#f9cccc', width: '70px', height: '70px' }}>
+                      <img src={machineInfo[key].image} alt="Machine Image" style={{ width: '100%', height: '100%', borderRadius: '90%' }} />
                     </div>
                     <div className="ps-3">
                       <h6>{machineInfo[key].count}</h6>
@@ -291,4 +291,3 @@ function DataCards() {
 }
 
 export default DataCards;
-

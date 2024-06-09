@@ -15,10 +15,10 @@ const LandingPage = () => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f5f5f5' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f5f5f5',  backgroundImage: 'url("assets/img/bgland.jpg")' }}>
             
-            <img src="assets/img/carelogo.png" alt="Care Logo" width="400" height="250" />
-            <h1 style={{ color: '#007bff', marginBottom: '50px' }}>Welcome to Health Assistant</h1>
+            {/* <img src="assets/img/carelogo.png" alt="Care Logo" width="400" height="250" /> */}
+            <h1 style={{ color: '#007bff', marginTop: '320px', marginBottom: '50px' }}>Welcome to Health Assistant</h1>
 
             <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '300px', margin: '0 auto' }}>
                 <div className="landing-button" onClick={navigateToSignUp} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
