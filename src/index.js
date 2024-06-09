@@ -21,6 +21,11 @@ import GenerateReport from './components/Machines/GenerateReport';
 import IndexGenerateReport from './components/Machines/IndexGenerateReport';
 import UserLogin from './components/UserLogin/UserLogin';
 import Signup from './components/UserLogin/Signup';
+import ChatHome from './components/chat/ChatHome';
+import ScanOptions from './components/Scanner/ScanOptions';
+import { MdCrisisAlert } from 'react-icons/md';
+import MriScan from './components/Scanner/MriScan';
+import ChestScan from './components/Scanner/ChestScan';
 
 ReactDOM.render(
   <GlobalStateProvider>
@@ -45,6 +50,11 @@ ReactDOM.render(
         <Route path="/AssignFuelCapacity" element={<AssignFuelCapacity/>} />
         <Route path="/GenerateReport" element={<GenerateReport/>} />
         <Route path="/IndexGenerateReport" element={<IndexGenerateReport/>} />
+        <Route path="/ChatHome" element={<ChatHome/>}/>
+        <Route path="/MriScan" element={<MriScan/>} />
+        <Route path="/ChestScan" element={<ChestScan/>} />
+        <Route path="/ScanOptions" element={<ScanOptions/>}/>
+        
         
 
       </Routes>

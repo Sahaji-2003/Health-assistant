@@ -7,6 +7,9 @@ import SpecificMachineTable from '../Machines/SpecificMachineTable'
 import { useGlobalState } from '../constants/GlobalStateProvider'
 import GensetMonitoringTable from '../Machines/GensetMonitoringTable'
 import SeparateApi from '../Machines/SeparateApi'
+import HealthDashboard from './HealthDashboard'
+import MriScan from '../Scanner/MriScan'
+
 
 function Dashboard() {
   const { getGlobal, setGlobal } = useGlobalState();
@@ -31,6 +34,7 @@ function Dashboard() {
           <div className="row">
           <LineChartOverall/>
             <DataCards />
+            <HealthDashboard/>
             {/* <GeneralMachineTable/> */}
             {/* <SeparateApi/> */}
             {/* <SpecificMachineTable/>

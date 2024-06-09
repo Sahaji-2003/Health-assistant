@@ -6,6 +6,9 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useGlobalState } from '../constants/GlobalStateProvider';
 import { API_URL } from '../constants/Url';
+// import ScanOptions from '../Scanner/ScanOptions';
+// import MriScanner from '../Scanner/MriScanner';
+import MriScan from '../Scanner/MriScan';
 
 function UserDash() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -74,6 +77,9 @@ function UserDash() {
       <div className={`content ${isSidebarOpen && window.innerWidth > 991.98 ? 'content-shifted' : ''}`}>
         <Sidebar isOpen={isSidebarOpen} closeSidebar={toggleSidebar} user_id={user_id} />
       <Dashboard user_id={user_id}/>
+  
+      {/* <ScanOptions/> */}
+      <MriScan/>
       <h1> {globalState}</h1>
     </div>
     </div>

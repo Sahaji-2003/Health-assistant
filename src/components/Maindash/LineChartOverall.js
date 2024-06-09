@@ -8,15 +8,15 @@ const LineChartOverall = () => {
     const data = {
       series: [
         {
-          name: 'Machine 1',
+          name: 'Water Intake',
           data: [31, 40, 28, 51, 42, 82, 56],
         },
         {
-          name: 'Machine 2',
+          name: 'Daily Exercise ',
           data: [11, 32, 45, 32, 34, 52, 41]
         },
         {
-          name: 'Machine 3',
+          name: 'Sleep',
           data: [15, 11, 32, 18, 9, 24, 11]
         }
       ],
