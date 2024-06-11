@@ -33,6 +33,8 @@ import BloodSugarRecord from './components/BloodSugarRecord';
 import WeightAndBmi from './components/WeightAndBmi';
 import AiHome from './components/AiChat/AiHome';
 import AiIndex from './components/AiChat/AiIndex';
+import Stress from './components/BloodPressure/Stress';
+import Fitness from './components/BloodPressure/Fitness';
 
 
 ReactDOM.render(
@@ -68,6 +70,8 @@ ReactDOM.render(
         <Route path="/BoneScan" element={<BoneScan/>}/>
         <Route path="/BloodSugarRecord" element={<BloodSugarRecord/>}/>
         <Route path="/WeightAndBmi" element={<WeightAndBmi/>}/>
+        <Route path="/Stress" element={<Stress/>}/>
+        <Route path="/Fitness" element={<Fitness/>} />
         
         
 

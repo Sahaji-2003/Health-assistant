@@ -623,59 +623,59 @@
 # if __name__ == '__main__':
 #     app.run(debug=True, port=5001)
 
-from flask import Flask, request, jsonify
-import google.generativeai as genai
-import re
-from flask_cors import CORS
+# from flask import Flask, request, jsonify
+# import google.generativeai as genai
+# import re
+# from flask_cors import CORS
 
-app = Flask(__name__)
-CORS(app)
+# app = Flask(__name__)
+# CORS(app)
 
-# Configure the API key for Google Generative AI
-genai.configure(api_key='AIzaSyB0zbbq3Ck9NTlsa27mRvz4z3xG8FjBuPs')  # Replace 'YOUR_API_KEY_HERE' with your actual API key
+# # Configure the API key for Google Generative AI
+# genai.configure(api_key='AIzaSyB0zbbq3Ck9NTlsa27mRvz4z3xG8FjBuPs')  # Replace 'YOUR_API_KEY_HERE' with your actual API key
 
-# Load Gemini Pro model and start a chat
-model = genai.GenerativeModel('gemini-pro')
-chat = model.start_chat(history=[])
+# # Load Gemini Pro model and start a chat
+# model = genai.GenerativeModel('gemini-pro')
+# chat = model.start_chat(history=[])
 
-# Function to get response from Gemini model
-def get_gemini_response(prompt, message_history):
-    conversation = [{'role': 'user', 'content': msg['content']} for msg in message_history]
-    conversation.append({'role': 'user', 'content': prompt})
+# # Function to get response from Gemini model
+# def get_gemini_response(prompt, message_history):
+#     conversation = [{'role': 'user', 'content': msg['content']} for msg in message_history]
+#     conversation.append({'role': 'user', 'content': prompt})
     
-    response = chat.send_message(prompt, stream=True)
-    response_text = "".join([chunk.text for chunk in response])
+#     response = chat.send_message(prompt, stream=True)
+#     response_text = "".join([chunk.text for chunk in response])
 
-    return response_text.strip()
+#     return response_text.strip()
 
-@app.route('/message', methods=['POST'])
-def handle_message():
-    data = request.json
-    user_message = data['message']
+# @app.route('/message', methods=['POST'])
+# def handle_message():
+#     data = request.json
+#     user_message = data['message']
 
-    # Define state dictionary to keep track of conversation
-    state = {"message_history": []}
+#     # Define state dictionary to keep track of conversation
+#     state = {"message_history": []}
 
-    # If it's the first message, set the initial prompt
-    if not state["message_history"]:
-        initial_prompt = "Hello! I'm your health assistant. Let's have a healthy conversation. How are you feeling today? If you're not feeling well, please describe any symptoms you're experiencing."
-        state["message_history"].append({'role': 'assistant', 'content': initial_prompt})
+#     # If it's the first message, set the initial prompt
+#     if not state["message_history"]:
+#         initial_prompt = "Hello! I'm your health assistant. Let's have a healthy conversation. How are you feeling today? If you're not feeling well, please describe any symptoms you're experiencing."
+#         state["message_history"].append({'role': 'assistant', 'content': initial_prompt})
 
-    # Handle incoming messages
-    state["message_history"].append({'role': 'user', 'content': user_message})
+#     # Handle incoming messages
+#     state["message_history"].append({'role': 'user', 'content': user_message})
 
-    # Get response from Gemini model
-    bot_response = get_gemini_response(user_message, state["message_history"])
+#     # Get response from Gemini model
+#     bot_response = get_gemini_response(user_message, state["message_history"])
 
-    # Check if the user mentioned symptoms
-    if "symptoms" in bot_response.lower():
-        follow_up_prompt = "Thank you for providing your symptoms. Can you also share your age, gender, and any relevant medical history?"
-        state["message_history"].append({'role': 'assistant', 'content': follow_up_prompt})
+#     # Check if the user mentioned symptoms
+#     if "symptoms" in bot_response.lower():
+#         follow_up_prompt = "Thank you for providing your symptoms. Can you also share your age, gender, and any relevant medical history?"
+#         state["message_history"].append({'role': 'assistant', 'content': follow_up_prompt})
 
-    return jsonify({'response': bot_response})
+#     return jsonify({'response': bot_response})
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+# if __name__ == '__main__':
+#     app.run(debug=True, port=5001)
 
 
 from flask import Flask, request, jsonify
@@ -745,23 +745,23 @@ def handle_message():
     user_message = data['message']
 
     # Define state dictionary to keep track of conversation
-    state = {"message_history": []}
+    state = {"message_history2": []}
 
     # If it's the first message, set the initial prompt
-    if not state["message_history"]:
+    if not state["message_history2"]:
         initial_prompt = "Hello! I am your AI Health Assistant. How can I assist you today? If you're experiencing any symptoms, please describe them."
-        state["message_history"].append({'role': 'assistant', 'content': initial_prompt})
+        state["message_history2"].append({'role': 'assistant', 'content': initial_prompt})
 
     # Handle incoming messages
-    state["message_history"].append({'role': 'user', 'content': user_message})
+    state["message_history2"].append({'role': 'user', 'content': user_message})
 
     # Get response from Gemini model
-    bot_response = get_gemini_response(user_message, state["message_history"])
+    bot_response = get_gemini_response(user_message, state["message_history2"])
 
     # Check if the user mentioned symptoms
     if "symptoms" in bot_response.lower():
         follow_up_prompt = "Thank you for providing your symptoms. Can you also share your age, gender, and any relevant medical history?"
-        state["message_history"].append({'role': 'assistant', 'content': follow_up_prompt})
+        state["message_history2"].append({'role': 'assistant', 'content': follow_up_prompt})
 
     return jsonify({'response': bot_response})
 

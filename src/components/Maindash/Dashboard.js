@@ -11,6 +11,7 @@ import HealthDashboard from './HealthDashboard'
 import MriScan from '../Scanner/MriScan'
 import RecordsAndReports from '../RecordsAndReports'
 import WeightAndBmi from '../WeightAndBmi'
+import Stress from '../BloodPressure/Stress'
 
 
 function Dashboard() {
@@ -44,6 +45,7 @@ function Dashboard() {
             {/* <SpecificMachineTable/>
             <GensetMonitoringTable/> */}
             {/* <Table_totalmachines /> */}
+            <Stress/>
 
           </div>
 

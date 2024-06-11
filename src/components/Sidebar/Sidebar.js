@@ -197,7 +197,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
               </Link>
             </li>
             <li>
-              <Link to="/WeightAndBmi">
+              <Link to="/Stress">
                 <a href="tables-general.html" style={navLinkStyles}>
                   <i className="bi bi-circle" style={iconStyles} />
                   <span>Stress Management</span>
@@ -205,7 +205,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
               </Link>
             </li>
             <li>
-              <Link to="/WeightAndBmi">
+              <Link to="/Fitness">
                 <a href="tables-general.html" style={navLinkStyles}>
                   <i className="bi bi-circle" style={iconStyles} />
                   <span>Fitness</span>
@@ -243,14 +243,14 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           </Link>
         </li>
 
-        <Link to="/AssignFuelCapacity">
+        {/* <Link to="/AssignFuelCapacity">
           <li className="nav-item" style={navItemStyles}>
             <a className="nav-link collapsed" style={navLinkStyles}>
               <i className="bi bi-gear" style={iconStyles} />
               <span>User Settings</span>
             </a>
           </li>
-        </Link>
+        </Link> */}
         
 
         <li className="nav-item" style={navItemStyles}>

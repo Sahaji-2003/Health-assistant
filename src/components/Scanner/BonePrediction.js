@@ -68,7 +68,7 @@ function BonePrediction() {
       <h2 style={{ color: '#333', marginBottom: '20px' }}>Chest X-RAY Disease Prediction</h2>
       <div style={{ marginBottom: '20px', textAlign: 'left' }}>
         <p style={{ fontSize: '16px', marginBottom: '10px' }}>
-        A chest X-ray is a medical imaging test that uses electromagnetic waves to create pictures of the heart, lungs, bones, and blood vessels of the chest.
+        A Bone X-ray is a medical imaging test that uses electromagnetic waves to create pictures of the heart, lungs, bones, and blood vessels of the chest.
         It is often used to diagnose conditions such as pneumonia, lung cancer, and heart failure.
         </p>
         <p style={{ fontSize: '16px', marginBottom: '10px' }}>
@@ -84,9 +84,12 @@ function BonePrediction() {
         </div>
       )}
       {showWarning && (
+        <div>
+          <span>Bone is fractured</span>
         <p style={{ color: 'red', fontStyle: 'italic', marginBottom: '20px' }}>
           This is an AI prediction. Please consult a medical professional for accurate diagnosis.
         </p>
+        </div>
       )}
      {prediction && (
   <div style={{ marginBottom: '20px' }}>
